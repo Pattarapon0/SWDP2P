@@ -3,7 +3,6 @@ import CredentialsProvider from "next-auth/providers/credentials"
 import userLogIn from "./userLogIn"
 import { Session } from "next-auth"
 
-
 export const authOptions:NextAuthConfig={
     providers:[
         CredentialsProvider({
@@ -24,6 +23,7 @@ export const authOptions:NextAuthConfig={
                 }
                 const user = await userLogIn(credentials.email.toString(), credentials.password.toString())
                 if (user) {
+                    console.log(user)
                     return user
                   } else {
                     return null
@@ -36,7 +36,11 @@ export const authOptions:NextAuthConfig={
     },
     callbacks: {
         async jwt({ token, user }) {
-            return { ...token, ...user }
+            if (user) {
+                console.log(user)
+                return { ...token, ...user }
+            }
+            return { ...token}
         },
        async session({ session, token,user }) {
             session.user = token as any

@@ -1,6 +1,6 @@
 import dotenv from 'dotenv'
 dotenv.config()
-interface CampGround {
+interface CampGrounds {
     data: {
         _id: string,
         name: string,

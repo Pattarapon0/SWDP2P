@@ -1,4 +1,4 @@
-
+'use client';
 import React from 'react';
 import { Button } from './button';
 import { Card, CardContent, CardFooter, CardHeader } from './card';
@@ -14,37 +14,37 @@ interface CampGroundCardProps {
   onDelete?: () => void;
 }
 
-export function CampGroundCard({ id, name, image, onView, onEdit, onDelete }: CampGroundCardProps) {
+export function CampGroundCard({ id, name, image}: CampGroundCardProps) {
   const { data: session } = useSession();
   const isAdmin = session?.user?.role === 'admin';
-
   return (
-    <Card className="w-full max-w-sm">
+    <Card className="w-full max-w-sm ">
       <CardHeader>
-        <div className="relative h-48 w-full">
+        <div className="relative h-full w-full">
           <Image
-            src={image}
+            src='/Cute_dog.jpg'
             alt={name}
-            fill
             className="rounded-t-lg object-cover"
+            width={500}
+            height={500}
           />
         </div>
       </CardHeader>
       <CardContent>
-        <h3 className="text-lg font-semibold">{name}</h3>
+        <h3 className="text-lg font-semibold">camp ground name: {name}</h3>
       </CardContent>
       <CardFooter className="flex gap-2">
         {!isAdmin && (
-          <Button onClick={onView} variant="default">
+          <Button onClick={()=>{}} variant="default">
             View
           </Button>
         )}
         {isAdmin && (
           <>
-            <Button onClick={onEdit} variant="outline">
+            <Button onClick={()=>{}} variant="outline">
               Edit
             </Button>
-            <Button onClick={onDelete} variant="destructive">
+            <Button onClick={()=>{}} variant="destructive">
               Delete
             </Button>
           </>

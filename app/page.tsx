@@ -6,7 +6,7 @@ export default async function Home() {
   const session = await auth();
   return (
     <div className="flex flex-col items-center justify-center">
-      <h1>Home {session?.user.name?? ''}</h1>
+      <h1 className="text-3xl font-bold text-blue-800">Home {session?.user.name?? ''}</h1>
       <div>
       {
         session ? (

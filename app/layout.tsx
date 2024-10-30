@@ -1,6 +1,6 @@
 import { auth } from "@/auth"
 import NextAuthProvider from "@/provider/NextAuthProvider"
-
+import './globals.css'
 export default async function RootLayout({
   children,
 }: Readonly<{
