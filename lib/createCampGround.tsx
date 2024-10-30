@@ -1,5 +1,6 @@
 import { auth } from "../auth";
 export default async function createCampGround(
+    id: string,
     name: string,
     address: string,
     district: string,

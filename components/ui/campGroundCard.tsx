@@ -4,17 +4,22 @@ import { Button } from './button';
 import { Card, CardContent, CardFooter, CardHeader } from './card';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
+import Link  from 'next/link';
 
 interface CampGroundCardProps {
-  id: string;
-  name: string;
-  image: string;
-  onView?: () => void;
-  onEdit?: () => void;
-  onDelete?: () => void;
+    _id: string;
+    name: string;
+    address: string;
+    district: string;
+    province: string;
+    postalCode: string;
+    tel: string;
+    picture: string;
+    __v: number;
+    id : string;
 }
 
-export function CampGroundCard({ id, name, image}: CampGroundCardProps) {
+export function CampGroundCard({item} : {item: CampGroundCardProps}) {
   const { data: session } = useSession();
   const isAdmin = session?.user?.role === 'admin';
   return (
@@ -23,7 +28,7 @@ export function CampGroundCard({ id, name, image}: CampGroundCardProps) {
         <div className="relative h-full w-full">
           <Image
             src='/Cute_dog.jpg'
-            alt={name}
+            alt={item.name}
             className="rounded-t-lg object-cover"
             width={500}
             height={500}
@@ -31,7 +36,7 @@ export function CampGroundCard({ id, name, image}: CampGroundCardProps) {
         </div>
       </CardHeader>
       <CardContent>
-        <h3 className="text-lg font-semibold">camp ground name: {name}</h3>
+        <h3 className="text-lg font-semibold">camp ground name: {item.name}</h3>
       </CardContent>
       <CardFooter className="flex gap-2">
         {!isAdmin && (
@@ -41,9 +46,11 @@ export function CampGroundCard({ id, name, image}: CampGroundCardProps) {
         )}
         {isAdmin && (
           <>
-            <Button onClick={()=>{}} variant="outline">
+            <Link href={{pathname:`/campground/edit/${item.id}`, query:{...item}}} passHref>
+            <Button  variant="outline">
               Edit
             </Button>
+            </Link>
             <Button onClick={()=>{}} variant="destructive">
               Delete
             </Button>
