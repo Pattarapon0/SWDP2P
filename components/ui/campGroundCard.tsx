@@ -5,7 +5,18 @@ import { Card, CardContent, CardFooter, CardHeader } from './card';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import Link  from 'next/link';
-
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+import deleteCampGround from '@/lib/deleteCampGround';
 interface CampGroundCardProps {
     _id: string;
     name: string;
@@ -19,7 +30,7 @@ interface CampGroundCardProps {
     id : string;
 }
 
-export function CampGroundCard({item} : {item: CampGroundCardProps}) {
+export function CampGroundCard({item,hadleDelete} : {item: CampGroundCardProps, hadleDelete: () => void}) {
   const { data: session } = useSession();
   const isAdmin = session?.user?.role === 'admin';
   return (
@@ -27,7 +38,7 @@ export function CampGroundCard({item} : {item: CampGroundCardProps}) {
       <CardHeader>
         <div className="relative h-full w-full">
           <Image
-            src='/Cute_dog.jpg'
+            src={item.picture}
             alt={item.name}
             className="rounded-t-lg object-cover"
             width={500}
@@ -51,9 +62,23 @@ export function CampGroundCard({item} : {item: CampGroundCardProps}) {
               Edit
             </Button>
             </Link>
-            <Button onClick={()=>{}} variant="destructive">
-              Delete
-            </Button>
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button variant="destructive">Delete</Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    This action cannot be undone. This will permanently delete this camp ground.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction onClick={() => {deleteCampGround(item.id, session?.user.token ?? '');hadleDelete()}}>Delete</AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
           </>
         )}
       </CardFooter>

@@ -1,18 +1,6 @@
 import dotenv from 'dotenv'
 dotenv.config()
-interface CampGrounds {
-    data: {
-        _id: string,
-        name: string,
-        address:string,
-        district:string,
-        province:string,
-        postalCode:string,
-        tel:string,
-        picture:string
 
-    }
-}
 export default async function getCampground() {
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/campgrounds`, {
