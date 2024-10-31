@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import getCampground from "@/lib/getCampGrounds"
+import getCampground from "@/lib/getCampGrounds";
 import { CampGroundCard } from "@/components/ui/campGroundCard";
 import CreateCampGroundCard from "@/components/ui/createCampGroundCard";
 import { Suspense } from "react";
@@ -14,6 +14,7 @@ interface CampGroundCardProps {
   postalcode: string;
   tel: string;
   picture: string;
+
 }
 
 export default function CampgroundPage() {
@@ -32,6 +33,7 @@ export default function CampgroundPage() {
   return (
     <div className="p-5">
       <div className="text-2xl text-red-500">Campground Page</div>
+
         <Suspense fallback={<div>Loading...</div>}>
           <div className="grid grid-cols-4 gap-4">
           {
@@ -44,8 +46,8 @@ export default function CampgroundPage() {
             ))
           }
           <CreateCampGroundCard />
-          </div>
-        </Suspense>
-      </div>
-    )
+        </div>
+      </Suspense>
+    </div>
+  );
 }
