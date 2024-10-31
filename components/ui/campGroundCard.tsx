@@ -50,11 +50,11 @@ export function CampGroundCard({item,hadleDelete} : {item: CampGroundCardProps, 
         <h3 className="text-lg font-semibold">camp ground name: {item.name}</h3>
       </CardContent>
       <CardFooter className="flex gap-2">
-        {!isAdmin && (
+          <Link href={{pathname:`/campground/${item.id}`, query:{...item}}} passHref>
           <Button onClick={()=>{}} variant="default">
             View
           </Button>
-        )}
+          </Link>
         {isAdmin && (
           <>
             <Link href={{pathname:`/campground/edit/${item.id}`, query:{...item}}} passHref>

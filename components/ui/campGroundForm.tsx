@@ -55,8 +55,6 @@ interface CampGroundCardProps {
     postalCode: string;
     tel: string;
     picture: string;
-    __v: number;
-    id : string;
   }
 export default function CampgroundForm({item,hadleSubmit} : {item?:CampGroundCardProps,hadleSubmit:any}) {
     const router = useRouter();
