@@ -12,8 +12,6 @@ interface CampGroundCardProps {
     postalCode: string;
     tel: string;
     picture: string;
-    __v: number;
-    id : string;
   }
 export default function CampgroundPage() {
     const item: CampGroundCardProps = {
@@ -22,11 +20,9 @@ export default function CampgroundPage() {
         address: useSearchParams().get('address') as string,
         district: useSearchParams().get('district') as string,
         province: useSearchParams().get('province') as string,
-        postalCode: useSearchParams().get('postalcode') as string,
+        postalCode: useSearchParams().get('postalCode') as string,
         tel: useSearchParams().get('tel') as string,
         picture: useSearchParams().get('picture') as string,
-        __v: parseInt(useSearchParams().get('__v') as string),
-        id: useSearchParams().get('id') as string,
     }
     return (
         <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">

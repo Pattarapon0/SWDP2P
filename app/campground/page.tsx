@@ -11,11 +11,9 @@ interface CampGroundCardProps {
   address: string;
   district: string;
   province: string;
-  postalCode: string;
+  postalcode: string;
   tel: string;
   picture: string;
-  __v: number;
-  id : string;
 }
 
 export default function CampgroundPage() {
@@ -40,7 +38,7 @@ export default function CampgroundPage() {
             campgrounds.map((item: CampGroundCardProps) => (
               <CampGroundCard
                 key={item._id}
-                item={item}
+                item={{_id: item._id, name: item.name, address: item.address, district: item.district, province: item.province, postalCode: item.postalcode, tel: item.tel, picture: item.picture, __v: 0, id: item._id}}
                 hadleDelete={() => setIsDelete(true)}
               />
             ))
