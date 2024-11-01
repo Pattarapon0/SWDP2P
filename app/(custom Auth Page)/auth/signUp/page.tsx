@@ -30,6 +30,10 @@ export default function RegisterPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle registration logic here
+    if (password !== passwordCon) {
+      setCorrectPassword(false);
+      return;
+    }
     console.log(formData);
   };
 
@@ -144,12 +148,12 @@ export default function RegisterPage() {
               />
             </div>
             <div className="flex flex-col space-y-[16px]">
-              <div className="space-x-[16px]">
+              <div className="space-y-[8px]">
                 <label htmlFor="password" className="text-blue-950 text-[32px]">
                   Password
                 </label>
                 {!correctPassword && (
-                  <div className="text-red-500 text-[24px]">
+                  <div className="text-red-500 text-[16px]">
                     Passwords do not match
                   </div>
                 )}
