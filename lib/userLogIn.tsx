@@ -1,5 +1,3 @@
-import dotenv from 'dotenv'
-dotenv.config()
 export default async function userLogIn(email:string,password:string){
    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/login`,{
         method:"POST",
