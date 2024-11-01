@@ -9,7 +9,7 @@ export async function middleware(req: Request) {
     const session = await auth();
     const { pathname } = new URL(req.url);
 
-    if (!session && pathname !== "/" && !pathname.includes('/images')) {
+    if (!session && pathname !== "/" && !pathname.includes('/images') && pathname !== "/register") {
         const callbackUrl = encodeURIComponent(pathname);
         return NextResponse.redirect(new URL(`/api/auth/signin?callbackUrl=${callbackUrl}`, req.url));
     }
