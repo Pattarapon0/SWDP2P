@@ -31,7 +31,7 @@ export default async function TopMenu({
       <div className={" w-full px-[64px] py-[16px] bg-blue-200  flex flex-row"}>
         {title}
         <div className="flex justify-end items-center space-x-[32px] w-full">
-          <ButtonM1 text="Sign In" url="/api/auth/signin" />
+          <ButtonM1 text="Sign In" url="/auth/signIn" />
         </div>
       </div>
     );
@@ -41,7 +41,7 @@ export default async function TopMenu({
       {title}
       <div className="flex justify-end items-center space-x-[32px] w-full">
         <ButtonM1 text="My Booking" url="/mybooking" />
-        <ButtonM1 text="Sign Out" url="/api/auth/signout" />
+        <ButtonM1 text="Sign Out" url="/auth/signOut" />
       </div>
     </div>
   );
