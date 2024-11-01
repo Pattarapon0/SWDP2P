@@ -2,12 +2,12 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 
 export const config = {
-    matcher: ['/((?!api|_next/static|_next/image|images|favicon.ico|public).*)'],
+  matcher: ["/((?!api|_next/static|_next/image|images|favicon.ico|public).*)"],
 };
 
 export async function middleware(req: Request) {
-    const session = await auth();
-    const { pathname } = new URL(req.url);
+  const session = await auth();
+  const { pathname } = new URL(req.url);
 
     if (!session && pathname !== "/" && !pathname.includes('/images') && pathname !== "/register") {
         const callbackUrl = encodeURIComponent(pathname);

@@ -58,7 +58,13 @@ export default async function Home() {
           )}
         </div>
         <div>{!session && <Link href="/register">Register</Link>}</div>
-        <div>{session && <Link href="/campground">Campground</Link>}</div>
+        <div>
+          {session && (
+            <Link href={`/campground?role=${session.user.role}`}>
+              Campground
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   );
