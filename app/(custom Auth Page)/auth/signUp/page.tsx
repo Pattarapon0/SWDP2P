@@ -33,6 +33,8 @@ export default function RegisterPage() {
     if (password !== passwordCon) {
       setCorrectPassword(false);
       return;
+    } else {
+      setCorrectPassword(true);
     }
     console.log(formData);
   };
